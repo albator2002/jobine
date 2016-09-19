@@ -1,14 +1,29 @@
 
-paper-button.fancy {
-  background: rgb(214, 227, 231);
 
+
+
+.horizontal-section {
+    padding: 0 !important;
 }
-paper-icon-button.fancy {
-    background: rgb(214, 227, 231);
+
+paper-item {
+    --paper-item: {
+        cursor: pointer;
+    };
 }
+.sublist paper-item {
+    padding-left: 1px;
+}
+.sublist2 paper-item {
+    padding-left: 30px;
+}
+
+
+
+
 google-map {
     width: 720px;
-    height:1615px;
+    height:1024px;
     display: block;
     left: 10px;
     top: 6px;
@@ -28,32 +43,18 @@ google-map {
   box-sizing: border-box;
 }
 
-#sidePanel {
-
-    background-color: gray;
-    color: white;
-}
 
 
 #mainPanel {
+}
 
-}
-#mainToolbar {
-  color: rgb(255, 255, 255);
-  background-color: rgb(79, 125, 201);
-}
-#section {
 
-  background: linear-gradient(rgb(214, 227, 231), lightblue);
-}
 
 
 #footToolbar {
   right: 0px;
   left: 0px;
-  color: rgb(255, 255, 255);
-  fill: rgb(255, 255, 255);
 
   position: relative;
-  background-color: rgb(79, 125, 201);
+
 }

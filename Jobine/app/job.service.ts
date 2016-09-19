@@ -14,7 +14,7 @@ import {JOBS} from './mock-jobs';
 export class JobService {
 
     constructor (private http: Http) {
-        this.http = http
+        //this.http = http
     }
 
     private _jobineUrl = 'http://localhost:4711/api/jobs';

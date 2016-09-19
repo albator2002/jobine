@@ -4,17 +4,21 @@
 
 // menu.ts
 import {Component} from '@angular/core';
-import {FORM_DIRECTIVES, FormBuilder, Validators, ControlGroup} from '@angular/common';
-import {Router} from '@angular/router-deprecated';
+
 
 
 @Component({
     selector: 'menu',
-    directives: [ FORM_DIRECTIVES ],
     template: `
    <div>
-   <li>TROUVER UNE JOBINE</li>
-   <li>OFFRIR UNE JOBINE</li>
+    <div >
+        <paper-listbox>
+          <paper-item>Edit Profile</paper-item>
+          <paper-item>Search</paper-item>
+          <paper-item>Offer</paper-item>
+          <paper-item>Apply</paper-item>
+        </paper-listbox>
+      </div>
    </div>
   `
 })

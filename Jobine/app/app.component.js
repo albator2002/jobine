@@ -1,4 +1,4 @@
-System.register(["@angular/core", '@angular/http', '@angular/router-deprecated', "./job.service.ts", "./login", "./menu"], function(exports_1, context_1) {
+System.register(["@angular/core", '@angular/router', "./job.service"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,27 +10,18 @@ System.register(["@angular/core", '@angular/http', '@angular/router-deprecated',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, router_deprecated_1, job_service_ts_1, login_1, menu_1;
+    var core_1, router_1, job_service_1;
     var Jobine;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (http_1_1) {
-                http_1 = http_1_1;
+            function (router_1_1) {
+                router_1 = router_1_1;
             },
-            function (router_deprecated_1_1) {
-                router_deprecated_1 = router_deprecated_1_1;
-            },
-            function (job_service_ts_1_1) {
-                job_service_ts_1 = job_service_ts_1_1;
-            },
-            function (login_1_1) {
-                login_1 = login_1_1;
-            },
-            function (menu_1_1) {
-                menu_1 = menu_1_1;
+            function (job_service_1_1) {
+                job_service_1 = job_service_1_1;
             }],
         execute: function() {
             let Jobine = class Jobine {
@@ -61,28 +52,28 @@ System.register(["@angular/core", '@angular/http', '@angular/router-deprecated',
                     selector: 'jobine-comp',
                     template: `
   <div> 
-    <paper-drawer-panel id="drPanel">
-        <paper-header-panel id="sidePanel" drawer>
-           <paper-toolbar id="sideToolbar">
-             <paper-icon-button icon="home" id="btnHome"></paper-icon-button>
-             <paper-button active="!isLoggedin()"  on-click="userLogin()" id="btnLogin">login</paper-button>
-          
+    <paper-drawer-panel >
+        <paper-header-panel  drawer>
+           <paper-toolbar>
+            <paper-button active="!isLoggedin()"  on-click="userLogin()" id="btnLogin">login</paper-button>
            </paper-toolbar>
            <router-outlet></router-outlet>
         </paper-header-panel>
 
         <paper-header-panel id="mainPanel" main>
             <paper-toolbar id="mainToolbar">
-                <paper-icon-button icon="menu" paper-drawer-toggle  id="btnMainMenu"></paper-icon-button>
+                <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
                 <paper-tabs selected="0">
                     <paper-tab>MAP</paper-tab>
                     <paper-tab>LIST</paper-tab>
                 </paper-tabs>  
-            </paper-toolbar>
+                
+             </paper-toolbar> 
             <section id="section">             
                 <iron-pages id="pages" selected="0">
+            
                   <div>  
-                    <google-map   latitude={{lat}} longitude={{long}} disableDefaultUI >
+                    <google-map latitude="{{lat}}" longitude="{{long}}" disableDefaultUI >
                         <google-map-marker *ngFor="let marker of jobList" latitude="{{marker.job.location.latitude}}" longitude="{{marker.job.location.longitude}}" title="{{marker.job.name}}"></google-map-marker>
                     </google-map>
                   </div>
@@ -100,14 +91,9 @@ System.register(["@angular/core", '@angular/http', '@angular/router-deprecated',
    
 </div>
   `,
-                    directives: [router_deprecated_1.ROUTER_DIRECTIVES],
-                    providers: [job_service_ts_1.JobService, http_1.HTTP_PROVIDERS, router_deprecated_1.ROUTER_PROVIDERS],
-                }),
-                router_deprecated_1.RouteConfig([
-                    { path: '/login', name: 'Login', component: login_1.Login },
-                    { path: '/Menu', name: 'Menu', component: menu_1.Menu }
-                ]), 
-                __metadata('design:paramtypes', [job_service_ts_1.JobService, router_deprecated_1.Router])
+                    providers: [job_service_1.JobService, router_1.Router],
+                }), 
+                __metadata('design:paramtypes', [job_service_1.JobService, router_1.Router])
             ], Jobine);
             exports_1("Jobine", Jobine);
         }

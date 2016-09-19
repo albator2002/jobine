@@ -33,7 +33,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                 constructor(http) {
                     this.http = http;
                     this._jobineUrl = 'http://localhost:4711/api/jobs';
-                    this.http = http;
+                    //this.http = http
                 }
                 getJobs() {
                     return this.http.get(this._jobineUrl)

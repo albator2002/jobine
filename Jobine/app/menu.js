@@ -1,7 +1,7 @@
 /**
  * Created by Alain on 5/29/2016.
  */
-System.register(['@angular/core', '@angular/common'], function(exports_1, context_1) {
+System.register(['@angular/core'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -13,15 +13,12 @@ System.register(['@angular/core', '@angular/common'], function(exports_1, contex
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1;
+    var core_1;
     var Menu;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (common_1_1) {
-                common_1 = common_1_1;
             }],
         execute: function() {
             let Menu = class Menu {
@@ -29,11 +26,16 @@ System.register(['@angular/core', '@angular/common'], function(exports_1, contex
             Menu = __decorate([
                 core_1.Component({
                     selector: 'menu',
-                    directives: [common_1.FORM_DIRECTIVES],
                     template: `
    <div>
-   <li>TROUVER UNE JOBINE</li>
-   <li>OFFRIR UNE JOBINE</li>
+    <div >
+        <paper-listbox>
+          <paper-item>Edit Profile</paper-item>
+          <paper-item>Search</paper-item>
+          <paper-item>Offer</paper-item>
+          <paper-item>Apply</paper-item>
+        </paper-listbox>
+      </div>
    </div>
   `
                 }), 

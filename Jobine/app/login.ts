@@ -3,15 +3,15 @@
  */
 // login.ts
 import {Component} from '@angular/core';
-import {FORM_DIRECTIVES, FormBuilder, Validators, ControlGroup, NgIf} from '@angular/common';
-import {Router} from '@angular/router-deprecated';
+import { FormBuilder, Validators, ControlGroup, NgIf} from '@angular/common';
+import {Router} from '@angular/router';
 import { PolymerElement } from '@vaadin/angular2-polymer';
 import {Authentication} from './authentication';
 
 @Component({
     selector: 'login',
     directives: [
-        FORM_DIRECTIVES,
+
         NgIf ,
         PolymerElement('paper-input'),
         PolymerElement('paper-button'),

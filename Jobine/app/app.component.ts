@@ -1,39 +1,37 @@
-import {EventEmitter, Output, Component, OnInit} from "@angular/core";
-import {Http, HTTP_PROVIDERS} from '@angular/http';
-import {Router,RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router-deprecated';
+import {Component, OnInit} from "@angular/core";
+import { Router} from '@angular/router';
 import {Job} from "./job";
-import {JobService} from "./job.service.ts";
-import {isLoggedin} from "./is-loggedin.ts";
-import {Login} from "./login";
-import {Menu} from "./menu";
+import {isLoggedin} from "./is-loggedin";
+import {JobService} from "./job.service";
 
 
 @Component({
     selector: 'jobine-comp',
+
     template: `
   <div> 
-    <paper-drawer-panel id="drPanel">
-        <paper-header-panel id="sidePanel" drawer>
-           <paper-toolbar id="sideToolbar">
-             <paper-icon-button icon="home" id="btnHome"></paper-icon-button>
-             <paper-button active="!isLoggedin()"  on-click="userLogin()" id="btnLogin">login</paper-button>
-          
+    <paper-drawer-panel >
+        <paper-header-panel  drawer>
+           <paper-toolbar>
+            <paper-button active="!isLoggedin()"  on-click="userLogin()" id="btnLogin">login</paper-button>
            </paper-toolbar>
            <router-outlet></router-outlet>
         </paper-header-panel>
 
         <paper-header-panel id="mainPanel" main>
             <paper-toolbar id="mainToolbar">
-                <paper-icon-button icon="menu" paper-drawer-toggle  id="btnMainMenu"></paper-icon-button>
+                <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
                 <paper-tabs selected="0">
                     <paper-tab>MAP</paper-tab>
                     <paper-tab>LIST</paper-tab>
                 </paper-tabs>  
-            </paper-toolbar>
+                
+             </paper-toolbar> 
             <section id="section">             
                 <iron-pages id="pages" selected="0">
+            
                   <div>  
-                    <google-map   latitude={{lat}} longitude={{long}} disableDefaultUI >
+                    <google-map latitude="{{lat}}" longitude="{{long}}" disableDefaultUI >
                         <google-map-marker *ngFor="let marker of jobList" latitude="{{marker.job.location.latitude}}" longitude="{{marker.job.location.longitude}}" title="{{marker.job.name}}"></google-map-marker>
                     </google-map>
                   </div>
@@ -51,15 +49,11 @@ import {Menu} from "./menu";
    
 </div>
   `,
-    directives: [ROUTER_DIRECTIVES],
-    providers: [JobService, HTTP_PROVIDERS,ROUTER_PROVIDERS],
-    
+    providers: [JobService,Router],
+
 })
 
-@RouteConfig([
-    {path: '/login',name:'Login', component: Login},
-    {path: '/Menu',name:'Menu', component: Menu}
-    ])
+
 
 export class Jobine implements OnInit {
 

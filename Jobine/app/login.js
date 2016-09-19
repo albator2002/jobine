@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/common', '@angular/router-deprecated', '@vaadin/angular2-polymer', './authentication'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/common', '@angular/router', '@vaadin/angular2-polymer', './authentication'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/common', '@angular/router-deprecated
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_deprecated_1, angular2_polymer_1, authentication_1;
+    var core_1, common_1, router_1, angular2_polymer_1, authentication_1;
     var Login;
     return {
         setters:[
@@ -20,8 +20,8 @@ System.register(['@angular/core', '@angular/common', '@angular/router-deprecated
             function (common_1_1) {
                 common_1 = common_1_1;
             },
-            function (router_deprecated_1_1) {
-                router_deprecated_1 = router_deprecated_1_1;
+            function (router_1_1) {
+                router_1 = router_1_1;
             },
             function (angular2_polymer_1_1) {
                 angular2_polymer_1 = angular2_polymer_1_1;
@@ -55,7 +55,6 @@ System.register(['@angular/core', '@angular/common', '@angular/router-deprecated
                 core_1.Component({
                     selector: 'login',
                     directives: [
-                        common_1.FORM_DIRECTIVES,
                         common_1.NgIf,
                         angular2_polymer_1.PolymerElement('paper-input'),
                         angular2_polymer_1.PolymerElement('paper-button'),
@@ -76,10 +75,11 @@ System.register(['@angular/core', '@angular/common', '@angular/router-deprecated
     </form>
   `
                 }), 
-                __metadata('design:paramtypes', [common_1.FormBuilder, authentication_1.Authentication, router_deprecated_1.Router])
+                __metadata('design:paramtypes', [(typeof (_a = typeof common_1.FormBuilder !== 'undefined' && common_1.FormBuilder) === 'function' && _a) || Object, authentication_1.Authentication, router_1.Router])
             ], Login);
             exports_1("Login", Login);
         }
     }
+    var _a;
 });
 //# sourceMappingURL=login.js.map

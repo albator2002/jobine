@@ -1,17 +1,7 @@
-import {bootstrap} from '@angular/platform-browser-dynamic';
-import {ROUTER_PROVIDERS} from '@angular/router-deprecated';
-import {Http, HTTP_PROVIDERS} from '@angular/http';
-import {Authentication} from './authentication';
-import {Jobine} from './app.component';
-
-bootstrap(Jobine, [
-  ROUTER_PROVIDERS,
-  HTTP_PROVIDERS,
-  Authentication,
-
-]);
-
-
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app.module';
+const platform = platformBrowserDynamic();
+platform.bootstrapModule(AppModule);
 /*
 Copyright 2016 Google Inc. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
