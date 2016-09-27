@@ -4,7 +4,6 @@ import {Job} from "./job";
 import {isLoggedin} from "./is-loggedin";
 import {JobService} from "./job.service";
 
-
 @Component({
     selector: 'jobine-comp',
 
@@ -49,7 +48,7 @@ import {JobService} from "./job.service";
    
 </div>
   `,
-    providers: [JobService,Router],
+    providers: [JobService],
 
 })
 
@@ -85,7 +84,7 @@ export class Jobine implements OnInit {
     }
 
     userLogin(){
-        this._router.navigate(['Login']);
+       this._router.navigate(['Login']);
     }
 
 

@@ -5,7 +5,10 @@ import {Menu} from "./menu";
 
 const appRoutes: Routes = [
     {
-        path: 'login',
+        path: '', component: Menu
+    },
+    {
+        path: 'Login',
         component: Login
     },
     {
@@ -13,3 +16,8 @@ const appRoutes: Routes = [
         component: Menu
     }
 ];
+export const appRoutingProviders: any[] = [
+
+];
+
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

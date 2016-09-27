@@ -91,7 +91,7 @@ System.register(["@angular/core", '@angular/router', "./job.service"], function(
    
 </div>
   `,
-                    providers: [job_service_1.JobService, router_1.Router],
+                    providers: [job_service_1.JobService],
                 }), 
                 __metadata('design:paramtypes', [job_service_1.JobService, router_1.Router])
             ], Jobine);
