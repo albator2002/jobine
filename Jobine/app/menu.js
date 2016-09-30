@@ -21,7 +21,7 @@ System.register(['@angular/core'], function(exports_1, context_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            let Menu = class Menu {
+            Menu = class Menu {
             };
             Menu = __decorate([
                 core_1.Component({
@@ -30,10 +30,13 @@ System.register(['@angular/core'], function(exports_1, context_1) {
    <div>
     <div >
         <paper-listbox>
-          <paper-item>Edit Profile</paper-item>
-          <paper-item>Search</paper-item>
-          <paper-item>Offer</paper-item>
-          <paper-item>Apply</paper-item>
+            <paper-item>Edit Profile</paper-item>
+            <paper-item>Search</paper-item>
+            <paper-item>My Jobines</paper-item>
+            <paper-item>My Messages</paper-item>
+            <paper-item>My bookmark</paper-item>
+            <paper-item>Post Jobine</paper-item>
+            <paper-item>About</paper-item>
         </paper-listbox>
       </div>
    </div>

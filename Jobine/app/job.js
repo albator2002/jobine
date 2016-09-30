@@ -8,8 +8,8 @@ System.register([], function(exports_1, context_1) {
             /**
              * Created by Alain on 4/26/2016.
              */
-            class Job {
-            }
+            Job = class Job {
+            };
             exports_1("Job", Job);
         }
     }

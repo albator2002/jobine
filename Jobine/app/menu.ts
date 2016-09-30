@@ -13,10 +13,13 @@ import {Component} from '@angular/core';
    <div>
     <div >
         <paper-listbox>
-          <paper-item>Edit Profile</paper-item>
-          <paper-item>Search</paper-item>
-          <paper-item>Offer</paper-item>
-          <paper-item>Apply</paper-item>
+            <paper-item>Edit Profile</paper-item>
+            <paper-item>Search</paper-item>
+            <paper-item>My Jobines</paper-item>
+            <paper-item>My Messages</paper-item>
+            <paper-item>My bookmark</paper-item>
+            <paper-item>Post Jobine</paper-item>
+            <paper-item>About</paper-item>
         </paper-listbox>
       </div>
    </div>

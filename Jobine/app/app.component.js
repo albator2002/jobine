@@ -24,7 +24,7 @@ System.register(["@angular/core", '@angular/router', "./job.service"], function(
                 job_service_1 = job_service_1_1;
             }],
         execute: function() {
-            let Jobine = class Jobine {
+            Jobine = class Jobine {
                 constructor(_jobService, _router) {
                     this._jobService = _jobService;
                     this._router = _router;
@@ -44,7 +44,10 @@ System.register(["@angular/core", '@angular/router', "./job.service"], function(
                         .subscribe(jobs => this.jobList = jobs, error => this.errorMessage = error);
                 }
                 userLogin() {
-                    this._router.navigate(['Login']);
+                    this._router.navigate(['/login']);
+                }
+                newAccount() {
+                    //this._router.navigate(['/newaccount']);
                 }
             };
             Jobine = __decorate([
@@ -55,7 +58,8 @@ System.register(["@angular/core", '@angular/router', "./job.service"], function(
     <paper-drawer-panel >
         <paper-header-panel  drawer>
            <paper-toolbar>
-            <paper-button active="!isLoggedin()"  on-click="userLogin()" id="btnLogin">login</paper-button>
+            <paper-button active="!isLoggedin()"  on-click="userLogin()" id="btnLogin">Login</paper-button>
+             <paper-button active="!isLoggedin()"  on-click="newAccount()" id="btnLAccount">New Account</paper-button>
            </paper-toolbar>
            <router-outlet></router-outlet>
         </paper-header-panel>

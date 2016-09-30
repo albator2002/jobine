@@ -24,26 +24,20 @@ System.register(['@angular/core', '@angular/router', './authentication'], functi
                 authentication_1 = authentication_1_1;
             }],
         execute: function() {
-            let Login = class Login {
+            Login = class Login {
                 constructor(auth, router) {
                     this.auth = auth;
                     this.router = router;
                     this.error = false;
-                    this._username = "";
-                    this._password = "";
-                    // this.form = fb.group({
-                    //     username:  ['', Validators.required],
-                    //     password:  ['', Validators.required]
-                    // });
+                    this.username = "";
+                    this.password = "";
                 }
                 login() {
-                    //var username = this.form.controls['username'].value;
-                    //var password = this.form.controls['password'].value;
-                    this.auth.login(this._username, this._password)
+                    this.auth.login(this.username, this.password)
                         .subscribe((token) => {
                         var btnLogin = document.querySelector('#btnLogin');
                         btnLogin.hidden = true;
-                        this.router.navigate(['../Menu']);
+                        this.router.navigate(['/menu']);
                     }, () => { this.error = true; });
                 }
             };
@@ -51,15 +45,17 @@ System.register(['@angular/core', '@angular/router', './authentication'], functi
                 core_1.Component({
                     selector: 'login',
                     template: `
-    <form  >
+    <form  #loginForm="ngForm">
       <div *ngIf="error">Check your user name or password</div>
       <div>
-       <paper-input id="username" name="username" [(value)]="_username" error-message="Invalide" label="Username"></paper-input>
+       <paper-input id="username" ngDefaultControl [(ngModel)]="username" name="username" required="true"
+               #usr="ngModel" error-message="Invalide" label="Username"></paper-input>
       </div>
       <div>
-        <paper-input id="password" name="password" [(value)]="_password" type="password"></paper-input>
+        <paper-input id="password" ngDefaultControl [(ngModel)]="password" name="password" required="true"
+               #pwd="ngModel" type="password"></paper-input>
       </div>
-      <div class="form-group">
+      <div >
         <paper-button raised on-click="login()"   >submit</paper-button>
       </div>
     </form>

@@ -5,23 +5,25 @@
 import {Component} from '@angular/core';
 import {  NgIf} from '@angular/common';
 import {Router} from '@angular/router';
-//import { PolymerElement } from '@vaadin/angular2-polymer';
 import {Authentication} from './authentication';
+import {NgForm} from '@angular/forms';
 
 @Component({
     selector: 'login',
 
 
     template: `
-    <form  >
+    <form  #loginForm="ngForm">
       <div *ngIf="error">Check your user name or password</div>
       <div>
-       <paper-input id="username" name="username" [(value)]="_username" error-message="Invalide" label="Username"></paper-input>
+       <paper-input id="username" ngDefaultControl [(ngModel)]="username" name="username" required="true"
+               #usr="ngModel" error-message="Invalide" label="Username"></paper-input>
       </div>
       <div>
-        <paper-input id="password" name="password" [(value)]="_password" type="password"></paper-input>
+        <paper-input id="password" ngDefaultControl [(ngModel)]="password" name="password" required="true"
+               #pwd="ngModel" type="password"></paper-input>
       </div>
-      <div class="form-group">
+      <div >
         <paper-button raised on-click="login()"   >submit</paper-button>
       </div>
     </form>
@@ -30,25 +32,20 @@ import {Authentication} from './authentication';
 export class Login {
 
     error: boolean = false;
-    _username:string = "";
-    _password:string = "";
+    username:string = "";
+    password:string = "";
 
     constructor( private auth: Authentication,private router:Router ) {
-       // this.form = fb.group({
-       //     username:  ['', Validators.required],
-       //     password:  ['', Validators.required]
-       // });
+
     }
 
     login() {
-        //var username = this.form.controls['username'].value;
-        //var password = this.form.controls['password'].value;
-        this.auth.login(this._username, this._password)
+        this.auth.login( this.username,  this.password)
             .subscribe(
                 (token: any) => {
                     var btnLogin = <HTMLElement>document.querySelector('#btnLogin');
                     btnLogin.hidden = true;
-                    this.router.navigate(['../Menu'])
+                    this.router.navigate(['/menu'])
                 },
                         () => { this.error = true; }
 

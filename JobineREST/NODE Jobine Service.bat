@@ -1,2 +1,2 @@
-cd c:\jobine\JobineREST
+cd F:\projects\jobine\JobineREST
 node server.js

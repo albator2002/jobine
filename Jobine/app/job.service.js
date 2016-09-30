@@ -29,7 +29,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                 Observable_1 = Observable_1_1;
             }],
         execute: function() {
-            let JobService = class JobService {
+            JobService = class JobService {
                 constructor(http) {
                     this.http = http;
                     this._jobineUrl = 'http://localhost:4711/api/jobs';

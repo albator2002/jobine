@@ -23,7 +23,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
             function (_1) {},
             function (_2) {}],
         execute: function() {
-            let Authentication = class Authentication {
+            Authentication = class Authentication {
                 constructor(http) {
                     this.http = http;
                     this.api_URL = 'http://localhost:4711/api';

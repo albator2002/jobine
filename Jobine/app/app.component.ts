@@ -12,7 +12,8 @@ import {JobService} from "./job.service";
     <paper-drawer-panel >
         <paper-header-panel  drawer>
            <paper-toolbar>
-            <paper-button active="!isLoggedin()"  on-click="userLogin()" id="btnLogin">login</paper-button>
+            <paper-button active="!isLoggedin()"  on-click="userLogin()" id="btnLogin">Login</paper-button>
+             <paper-button active="!isLoggedin()"  on-click="newAccount()" id="btnLAccount">New Account</paper-button>
            </paper-toolbar>
            <router-outlet></router-outlet>
         </paper-header-panel>
@@ -84,7 +85,10 @@ export class Jobine implements OnInit {
     }
 
     userLogin(){
-       this._router.navigate(['Login']);
+       this._router.navigate(['/login']);
+    }
+    newAccount(){
+        //this._router.navigate(['/newaccount']);
     }
 
 
