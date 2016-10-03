@@ -11,7 +11,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, http_1;
-    var Authentication;
+    var AuthenticationService;
     return {
         setters:[
             function (core_1_1) {
@@ -23,7 +23,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
             function (_1) {},
             function (_2) {}],
         execute: function() {
-            Authentication = class Authentication {
+            AuthenticationService = class AuthenticationService {
                 constructor(http) {
                     this.http = http;
                     this.api_URL = 'http://localhost:4711/api';
@@ -57,14 +57,14 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                     });
                 }
             };
-            Authentication = __decorate([
+            AuthenticationService = __decorate([
                 core_1.Injectable(), 
                 __metadata('design:paramtypes', [http_1.Http])
-            ], Authentication);
-            exports_1("Authentication", Authentication); /**
+            ], AuthenticationService);
+            exports_1("AuthenticationService", AuthenticationService); /**
              * Created by Alain on 5/10/2016.
              */
         }
     }
 });
-//# sourceMappingURL=authentication.js.map
+//# sourceMappingURL=authentication.service.js.map

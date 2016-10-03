@@ -1,5 +1,5 @@
 ///<reference path="../node_modules/rxjs/Observable.d.ts"/>
-// authentication.ts
+// authentication.service.ts
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Http, Response,Headers} from '@angular/http';
@@ -8,7 +8,7 @@ import 'rxjs/add/operator/catch';
 
 
 @Injectable()
-export class Authentication {
+export class AuthenticationService {
     token: string;
 
 

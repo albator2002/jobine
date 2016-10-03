@@ -2,7 +2,7 @@
  * Created by Alain on 5/29/2016.
  */
 
-// menu.ts
+// menu.component.ts
 import {Component} from '@angular/core';
 
 
@@ -26,6 +26,6 @@ import {Component} from '@angular/core';
   `
 })
 
-export class Menu {
+export class MenuComponent {
 
 }

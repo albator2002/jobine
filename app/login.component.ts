@@ -1,11 +1,11 @@
 /**
  * Created by Alain on 5/10/2016.
  */
-// login.ts
+// login.component.ts
 import {Component} from '@angular/core';
 import {  NgIf} from '@angular/common';
 import {Router} from '@angular/router';
-import {Authentication} from './authentication';
+import {AuthenticationService} from './authentication.service';
 import {NgForm} from '@angular/forms';
 
 @Component({
@@ -29,13 +29,13 @@ import {NgForm} from '@angular/forms';
     </form>
   `
 })
-export class Login {
+export class LoginComponent {
 
     error: boolean = false;
     username:string = "";
     password:string = "";
 
-    constructor( private auth: Authentication,private router:Router ) {
+    constructor(private auth: AuthenticationService, private router:Router ) {
 
     }
 
@@ -44,7 +44,9 @@ export class Login {
             .subscribe(
                 (token: any) => {
                     var btnLogin = <HTMLElement>document.querySelector('#btnLogin');
+                    var btnNewAccount = <HTMLElement>document.querySelector('#btnNewAccount');
                     btnLogin.hidden = true;
+                    btnNewAccount.hidden = true;
                     this.router.navigate(['/menu'])
                 },
                         () => { this.error = true; }

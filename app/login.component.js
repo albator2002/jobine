@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/router', './authentication'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/router', './authentication.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,8 +10,8 @@ System.register(['@angular/core', '@angular/router', './authentication'], functi
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, authentication_1;
-    var Login;
+    var core_1, router_1, authentication_service_1;
+    var LoginComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -20,11 +20,11 @@ System.register(['@angular/core', '@angular/router', './authentication'], functi
             function (router_1_1) {
                 router_1 = router_1_1;
             },
-            function (authentication_1_1) {
-                authentication_1 = authentication_1_1;
+            function (authentication_service_1_1) {
+                authentication_service_1 = authentication_service_1_1;
             }],
         execute: function() {
-            Login = class Login {
+            LoginComponent = class LoginComponent {
                 constructor(auth, router) {
                     this.auth = auth;
                     this.router = router;
@@ -36,12 +36,14 @@ System.register(['@angular/core', '@angular/router', './authentication'], functi
                     this.auth.login(this.username, this.password)
                         .subscribe((token) => {
                         var btnLogin = document.querySelector('#btnLogin');
+                        var btnNewAccount = document.querySelector('#btnNewAccount');
                         btnLogin.hidden = true;
+                        btnNewAccount.hidden = true;
                         this.router.navigate(['/menu']);
                     }, () => { this.error = true; });
                 }
             };
-            Login = __decorate([
+            LoginComponent = __decorate([
                 core_1.Component({
                     selector: 'login',
                     template: `
@@ -61,10 +63,10 @@ System.register(['@angular/core', '@angular/router', './authentication'], functi
     </form>
   `
                 }), 
-                __metadata('design:paramtypes', [authentication_1.Authentication, router_1.Router])
-            ], Login);
-            exports_1("Login", Login);
+                __metadata('design:paramtypes', [authentication_service_1.AuthenticationService, router_1.Router])
+            ], LoginComponent);
+            exports_1("LoginComponent", LoginComponent);
         }
     }
 });
-//# sourceMappingURL=login.js.map
+//# sourceMappingURL=login.component.js.map

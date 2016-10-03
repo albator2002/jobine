@@ -14,16 +14,16 @@ System.register(['@angular/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var Menu;
+    var MenuComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            Menu = class Menu {
+            MenuComponent = class MenuComponent {
             };
-            Menu = __decorate([
+            MenuComponent = __decorate([
                 core_1.Component({
                     selector: 'menu',
                     template: `
@@ -43,9 +43,9 @@ System.register(['@angular/core'], function(exports_1, context_1) {
   `
                 }), 
                 __metadata('design:paramtypes', [])
-            ], Menu);
-            exports_1("Menu", Menu);
+            ], MenuComponent);
+            exports_1("MenuComponent", MenuComponent);
         }
     }
 });
-//# sourceMappingURL=menu.js.map
+//# sourceMappingURL=menu.component.js.map
