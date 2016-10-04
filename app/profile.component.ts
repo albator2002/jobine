@@ -31,7 +31,7 @@ import {Profile} from "./profile";
       </div>
       <div>
         <paper-input id="pwd" ngDefaultControl [(ngModel)]="profileSvr.pr.profile.password" name="password" required="true"
-               #pwd="ngModel" type="password"></paper-input>
+               #pwd="ngModel" type="password" label="Password"></paper-input>
       </div>
       
       <div >

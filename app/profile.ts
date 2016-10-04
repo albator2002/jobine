@@ -11,7 +11,13 @@ export class Profile {
         created: string
     };
     constructor(private _firstName:string,private _lastName:string,private _email:string,private _password:string){
-        this.profile =  {firstname:_firstName,lastname:_lastName,email:_email,password:_password,created:new Date().toDateString()};
+        this.profile =  {
+            "firstname":_firstName,
+            "lastname":_lastName,
+            "email":_email,
+            "password":_password,
+            "created":new Date().toDateString()
+        };
 
 
     }

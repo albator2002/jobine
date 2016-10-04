@@ -20,12 +20,10 @@ export class ProfileService {
     }
     private api_URL :string = 'http://localhost:4711/api';
 
-    // TODO : createProfile
+    // createProfile
     createProfile(){
          let profile = this.pr;
-         return this.http.post(this.api_URL+'/profiles', JSON.stringify({
-             profile
-         }), {
+         return this.http.post(this.api_URL+'/profiles', profile, {
              headers: new Headers({
              'Content-Type': 'application/json'
             })
