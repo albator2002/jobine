@@ -47,7 +47,7 @@ export class LoginComponent {
                     var btnNewAccount = <HTMLElement>document.querySelector('#btnNewAccount');
                     btnLogin.hidden = true;
                     btnNewAccount.hidden = true;
-                    this.router.navigate(['/menu'])
+                    this.router.navigate([{outlets: {leftoutlet: 'menu'}}])
                 },
                         () => { this.error = true; }
 

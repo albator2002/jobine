@@ -30,6 +30,10 @@ System.register(['@angular/core', '@angular/router', './profile.service'], funct
                     this.router = router;
                     this.error = false;
                 }
+                ngOnInit() {
+                    var pdProfile = document.querySelector('#pdProfile');
+                    pdProfile.open();
+                }
                 newProfile() {
                     this.profileSvr.createProfile()
                         .subscribe((token) => {
@@ -37,7 +41,7 @@ System.register(['@angular/core', '@angular/router', './profile.service'], funct
                         var btnNewAccount = document.querySelector('#btnNewAccount');
                         btnLogin.hidden = true;
                         btnNewAccount.hidden = true;
-                        this.router.navigate(['/menu']);
+                        this.router.navigate([{ outlets: { leftoutlet: 'menu' } }]);
                     }, () => { this.error = true; });
                 }
             };
@@ -45,29 +49,36 @@ System.register(['@angular/core', '@angular/router', './profile.service'], funct
                 core_1.Component({
                     selector: 'profile',
                     template: `
-    <form  #profileForm="ngForm">
-      <div *ngIf="error">Check your user name or password</div>
-       <div>
-       <paper-input id="firstname" ngDefaultControl [(ngModel)]="profileSvr.pr.profile.firstname" name="firstname" required="true"
-               #firstname="ngModel" error-message="Invalide" label="First Name"></paper-input>
-      </div>
-        <div>
-       <paper-input id="lastname" ngDefaultControl [(ngModel)]="profileSvr.pr.profile.lastname" name="lastname" required="true"
-               #lastname="ngModel" error-message="Invalide" label="Last name"></paper-input>
-      </div>
-      <div>
-       <paper-input id="email" ngDefaultControl [(ngModel)]="profileSvr.pr.profile.email" name="email" required="true"
-               #email="ngModel" error-message="Invalide" label="Email"></paper-input>
-      </div>
-      <div>
-        <paper-input id="pwd" ngDefaultControl [(ngModel)]="profileSvr.pr.profile.password" name="password" required="true"
-               #pwd="ngModel" type="password" label="Password"></paper-input>
-      </div>
-      
+    <paper-dialog id="pdProfile"  class="size-position">
+      <h2>New Profile</h2>
+     
       <div >
-        <paper-button raised on-click="newProfile()"   >submit</paper-button>
+         <form  #profileForm="ngForm">
+          <div *ngIf="error">Check your user name or password</div>
+           <div>
+           <paper-input id="firstname" ngDefaultControl [(ngModel)]="profileSvr.pr.profile.firstname" name="firstname" required="true"
+                   #firstname="ngModel" error-message="Invalide" label="First Name"></paper-input>
+          </div>
+            <div>
+           <paper-input id="lastname" ngDefaultControl [(ngModel)]="profileSvr.pr.profile.lastname" name="lastname" required="true"
+                   #lastname="ngModel" error-message="Invalide" label="Last name"></paper-input>
+          </div>
+          <div>
+           <paper-input id="email" ngDefaultControl [(ngModel)]="profileSvr.pr.profile.email" name="email" required="true"
+                   #email="ngModel" error-message="Invalide" label="Email"></paper-input>
+          </div>
+          <div>
+            <paper-input id="pwd" ngDefaultControl [(ngModel)]="profileSvr.pr.profile.password" name="password" required="true"
+                   #pwd="ngModel" type="password" label="Password"></paper-input>
+          </div>
+          
+          <div >
+            <paper-button raised on-click="newProfile()"   >submit</paper-button>
+          </div>
+        </form>
       </div>
-    </form>
+    </paper-dialog>
+  
   `
                 }), 
                 __metadata('design:paramtypes', [profile_service_1.ProfileService, router_1.Router])
