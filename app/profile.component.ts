@@ -49,8 +49,9 @@ import {Profile} from "./profile";
 export class ProfileComponent implements OnInit{
 
     error: boolean = false;
-
-    constructor(private profileSvr: ProfileService, private router:Router ) {
+    mode : string;
+    constructor(private profileSvr: ProfileService, private router:Router) {
+        //TODO : get rote param
 
     }
     ngOnInit() {

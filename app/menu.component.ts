@@ -4,6 +4,7 @@
 
 // menu.component.ts
 import {Component} from '@angular/core';
+import { Router} from '@angular/router';
 
 
 
@@ -13,7 +14,7 @@ import {Component} from '@angular/core';
    <div>
     <div >
         <paper-listbox>
-            <paper-item>Edit Profile</paper-item>
+            <paper-item id="editProfile" on-click="editProfile()" >Edit Profile</paper-item>
             <paper-item>Search</paper-item>
             <paper-item>My Jobines</paper-item>
             <paper-item>My Messages</paper-item>
@@ -28,4 +29,11 @@ import {Component} from '@angular/core';
 
 export class MenuComponent {
 
+    constructor(private _router:Router ) {
+    }
+
+    editProfile(){
+         this._router.navigate([{outlets: {popupOutlet: 'profile/edit'}}]);
+
+    }
 }

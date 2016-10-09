@@ -24,8 +24,9 @@ System.register(['@angular/core', '@angular/router', './profile.service'], funct
                 profile_service_1 = profile_service_1_1;
             }],
         execute: function() {
-            ProfileComponent = class ProfileComponent {
+            let ProfileComponent = class ProfileComponent {
                 constructor(profileSvr, router) {
+                    //TODO : get rote param
                     this.profileSvr = profileSvr;
                     this.router = router;
                     this.error = false;
