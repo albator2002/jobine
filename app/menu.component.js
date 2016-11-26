@@ -24,12 +24,12 @@ System.register(['@angular/core', '@angular/router'], function(exports_1, contex
                 router_1 = router_1_1;
             }],
         execute: function() {
-            let MenuComponent = class MenuComponent {
+            MenuComponent = class MenuComponent {
                 constructor(_router) {
                     this._router = _router;
                 }
                 editProfile() {
-                    this._router.navigate([{ outlets: { popupOutlet: 'profile/edit' } }]);
+                    this._router.navigate([{ outlets: { popupOutlet: 'profile' } }]);
                 }
             };
             MenuComponent = __decorate([

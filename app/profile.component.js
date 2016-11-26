@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/router', './profile.service'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/router', 'rxjs/add/operator/map', './profile.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -20,40 +20,61 @@ System.register(['@angular/core', '@angular/router', './profile.service'], funct
             function (router_1_1) {
                 router_1 = router_1_1;
             },
+            function (_1) {},
             function (profile_service_1_1) {
                 profile_service_1 = profile_service_1_1;
             }],
         execute: function() {
-            let ProfileComponent = class ProfileComponent {
-                constructor(profileSvr, router) {
-                    //TODO : get rote param
+            ProfileComponent = class ProfileComponent {
+                constructor(profileSvr, route, router) {
                     this.profileSvr = profileSvr;
+                    this.route = route;
                     this.router = router;
                     this.error = false;
                 }
                 ngOnInit() {
-                    var pdProfile = document.querySelector('#pdProfile');
-                    pdProfile.open();
+                    this.initProfile();
                 }
-                newProfile() {
-                    this.profileSvr.createProfile()
-                        .subscribe((token) => {
-                        var btnLogin = document.querySelector('#btnLogin');
-                        var btnNewAccount = document.querySelector('#btnNewAccount');
-                        btnLogin.hidden = true;
-                        btnNewAccount.hidden = true;
-                        this.router.navigate([{ outlets: { leftoutlet: 'menu' } }]);
-                    }, () => { this.error = true; });
+                initProfile() {
+                    this.toggleProfile();
+                }
+                toggleProfile() {
+                    let pdProfile = document.querySelector('#pdProfile');
+                    pdProfile.toggle();
+                }
+                saveProfile() {
+                    //TODO: if profile.id do update
+                    if (this.profileSvr.pr.id) {
+                        this.profileSvr.updateProfile()
+                            .subscribe((token) => {
+                            this.router.navigate([{ outlets: { leftoutlet: 'menu', popupOutlet: 'blank' } }]);
+                        }, () => {
+                            this.error = true;
+                        });
+                    }
+                    else {
+                        this.profileSvr.createProfile()
+                            .subscribe((token) => {
+                            var btnLogin = document.querySelector('#btnLogin');
+                            var btnNewAccount = document.querySelector('#btnNewAccount');
+                            btnLogin.hidden = true;
+                            btnNewAccount.hidden = true;
+                            this.router.navigate([{ outlets: { leftoutlet: 'menu', popupOutlet: 'blank' } }]);
+                        }, () => {
+                            this.error = true;
+                        });
+                    }
                 }
             };
             ProfileComponent = __decorate([
                 core_1.Component({
                     selector: 'profile',
                     template: `
-    <paper-dialog id="pdProfile"  class="size-position">
+    <div onfocus="initProfile()">
+    <paper-dialog id="pdProfile"  class="size-position" >
       <h2>New Profile</h2>
      
-      <div >
+      <div>
          <form  #profileForm="ngForm">
           <div *ngIf="error">Check your user name or password</div>
            <div>
@@ -74,15 +95,16 @@ System.register(['@angular/core', '@angular/router', './profile.service'], funct
           </div>
           
           <div >
-            <paper-button raised on-click="newProfile()"   >submit</paper-button>
+            <paper-button raised on-click="saveProfile()"   >submit</paper-button>
           </div>
         </form>
       </div>
     </paper-dialog>
+    </div>
   
   `
                 }), 
-                __metadata('design:paramtypes', [profile_service_1.ProfileService, router_1.Router])
+                __metadata('design:paramtypes', [profile_service_1.ProfileService, router_1.ActivatedRoute, router_1.Router])
             ], ProfileComponent);
             exports_1("ProfileComponent", ProfileComponent);
         }

@@ -33,7 +33,7 @@ export class MenuComponent {
     }
 
     editProfile(){
-         this._router.navigate([{outlets: {popupOutlet: 'profile/edit'}}]);
+         this._router.navigate([{outlets: {popupOutlet: 'profile'}}]);
 
     }
 }

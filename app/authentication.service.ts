@@ -5,17 +5,18 @@ import {Observable} from 'rxjs/Observable';
 import {Http, Response,Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-
+import {ProfileService} from './profile.service';
+import {Profile} from "./profile";
 
 @Injectable()
 export class AuthenticationService {
     token: string;
+    svrProfile:ProfileService;
 
-
-    constructor(private http: Http) {
+    constructor(private http: Http, svrProfile:ProfileService) {
         this.token = localStorage.getItem('token');
         this.http = http;
-
+        this.svrProfile = svrProfile;
     }
     private api_URL :string = 'http://localhost:4711/api';
 
@@ -31,6 +32,7 @@ export class AuthenticationService {
          })
          .map((res : any) => {
              let data = res.json();
+             this.svrProfile.pr = new Profile(data._id, data.profile.firstname,data.profile.lastname,data.profile.email,data.profile.password);
              this.token = data.profile.token;
              localStorage.setItem('token', this.token);
          });

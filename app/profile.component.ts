@@ -4,20 +4,22 @@
 // profile.component.ts
 import {Component, OnInit} from '@angular/core';
 import {  NgIf} from '@angular/common';
-import {Router} from '@angular/router';
-import {AuthenticationService} from './authentication.service'; //TODO : remove
+import {ActivatedRoute,Router } from '@angular/router';
+import 'rxjs/add/operator/map';
 import {ProfileService} from './profile.service';
 import {NgForm} from '@angular/forms';
 import {Profile} from "./profile";
+
 
 @Component({
     selector: 'profile',
 
     template: `
-    <paper-dialog id="pdProfile"  class="size-position">
+    <div onfocus="initProfile()">
+    <paper-dialog id="pdProfile"  class="size-position" >
       <h2>New Profile</h2>
      
-      <div >
+      <div>
          <form  #profileForm="ngForm">
           <div *ngIf="error">Check your user name or password</div>
            <div>
@@ -38,39 +40,70 @@ import {Profile} from "./profile";
           </div>
           
           <div >
-            <paper-button raised on-click="newProfile()"   >submit</paper-button>
+            <paper-button raised on-click="saveProfile()"   >submit</paper-button>
           </div>
         </form>
       </div>
     </paper-dialog>
+    </div>
   
   `
 })
 export class ProfileComponent implements OnInit{
 
     error: boolean = false;
-    mode : string;
-    constructor(private profileSvr: ProfileService, private router:Router) {
-        //TODO : get rote param
+
+    constructor(private profileSvr: ProfileService, private route:ActivatedRoute, private router:Router) {
+
 
     }
+
     ngOnInit() {
-        var pdProfile = <HTMLElement>document.querySelector('#pdProfile');
-        pdProfile.open();
+        this.initProfile();
     }
 
-    newProfile() {
-        this.profileSvr.createProfile()
-            .subscribe(
-                (token: any) => {
-                    var btnLogin = <HTMLElement>document.querySelector('#btnLogin');
-                    var btnNewAccount = <HTMLElement>document.querySelector('#btnNewAccount');
-                    btnLogin.hidden = true;
-                    btnNewAccount.hidden = true;
-                    this.router.navigate([{outlets: {leftoutlet: 'menu'}}])
-                },
-                        () => { this.error = true; }
+    initProfile(){
+        this.toggleProfile();
 
-            );
+    }
+
+    toggleProfile()
+    {
+        let pdProfile = <HTMLElement>document.querySelector('#pdProfile');
+        pdProfile.toggle();
+    }
+
+    saveProfile(){
+        //TODO: if profile.id do update
+        if (this.profileSvr.pr.id)
+        {
+            this.profileSvr.updateProfile()
+                .subscribe(
+                    (token: any) => {
+
+                        this.router.navigate([{outlets: {leftoutlet: 'menu',popupOutlet:'blank'}}]);
+
+                    },
+                    () => {
+                        this.error = true;
+                    }
+                );
+        }else {
+            this.profileSvr.createProfile()
+                .subscribe(
+                    (token: any) => {
+                        var btnLogin = <HTMLElement>document.querySelector('#btnLogin');
+                        var btnNewAccount = <HTMLElement>document.querySelector('#btnNewAccount');
+                        btnLogin.hidden = true;
+                        btnNewAccount.hidden = true;
+
+                        this.router.navigate([{outlets: {leftoutlet: 'menu',popupOutlet:'blank'}}]);
+
+                    },
+                    () => {
+                        this.error = true;
+                    }
+                );
+        }
     }
 }

@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxjs/add/operator/catch'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxjs/add/operator/catch', './profile.service', "./profile"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1;
+    var core_1, http_1, profile_service_1, profile_1;
     var AuthenticationService;
     return {
         setters:[
@@ -21,14 +21,21 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                 http_1 = http_1_1;
             },
             function (_1) {},
-            function (_2) {}],
+            function (_2) {},
+            function (profile_service_1_1) {
+                profile_service_1 = profile_service_1_1;
+            },
+            function (profile_1_1) {
+                profile_1 = profile_1_1;
+            }],
         execute: function() {
             AuthenticationService = class AuthenticationService {
-                constructor(http) {
+                constructor(http, svrProfile) {
                     this.http = http;
                     this.api_URL = 'http://localhost:4711/api';
                     this.token = localStorage.getItem('token');
                     this.http = http;
+                    this.svrProfile = svrProfile;
                 }
                 login(username, password) {
                     return this.http.post(this.api_URL + '/login', JSON.stringify({
@@ -41,6 +48,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
                     })
                         .map((res) => {
                         let data = res.json();
+                        this.svrProfile.pr = new profile_1.Profile(data._id, data.profile.firstname, data.profile.lastname, data.profile.email, data.profile.password);
                         this.token = data.profile.token;
                         localStorage.setItem('token', this.token);
                     });
@@ -59,7 +67,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', 'rxj
             };
             AuthenticationService = __decorate([
                 core_1.Injectable(), 
-                __metadata('design:paramtypes', [http_1.Http])
+                __metadata('design:paramtypes', [http_1.Http, profile_service_1.ProfileService])
             ], AuthenticationService);
             exports_1("AuthenticationService", AuthenticationService); /**
              * Created by Alain on 5/10/2016.

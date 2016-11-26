@@ -10,7 +10,8 @@ export class Profile {
         password: string,
         created: string
     };
-    constructor(private _firstName:string,private _lastName:string,private _email:string,private _password:string){
+    constructor(private _id:string,private _firstName:string,private _lastName:string,private _email:string,private _password:string){
+        this.id = _id;
         this.profile =  {
             "firstname":_firstName,
             "lastname":_lastName,

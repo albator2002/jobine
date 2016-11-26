@@ -16,9 +16,20 @@ export class ProfileService {
     constructor(private http: Http) {
         this.token = localStorage.getItem('token');
         this.http = http;
-        this.pr = new Profile("","","","");
+        this.pr = new Profile("","","","","");
     }
     private api_URL :string = 'http://localhost:4711/api';
+
+    //getProfile
+    getProfile(id:string) {
+        return this.http.get(this.api_URL+'/profiles/'+ id)
+            .map((res : any) => {
+                let data = res.json();
+
+                this.pr = new Profile(id, data.profile.firstname,data.profile.lastname,data.profile.email,data.profile.password);
+                localStorage.setItem('token', this.token);
+            });
+    }
 
     // createProfile
     createProfile(){
@@ -35,21 +46,16 @@ export class ProfileService {
          });
     }
 
-    //TODO : updateProfile
     updateProfile() {
-
-        return this.http.get(this.api_URL+'/logout', {
-         headers: new Headers({
-         'x-security-token': this.token
-         })
-         })
-         .map((res : any) => {
-         this.token = undefined;
-         localStorage.removeItem('token');
-         });
-
-
-
+        let profile = this.pr;
+        return this.http.put(this.api_URL+'/profiles/'+ profile.id , profile, {
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        })
+        .map((res : any) => {
+            let data = res.json();
+        });
     }
 }/**
  * Created by Alain on 5/10/2016.
