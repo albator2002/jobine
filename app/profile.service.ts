@@ -24,9 +24,9 @@ export class ProfileService {
     getProfile(id:string) {
         return this.http.get(this.api_URL+'/profiles/'+ id)
             .map((res : any) => {
-                let data = res.json();
+                let profile = res.json();
 
-                this.pr = new Profile(id, data.profile.firstname,data.profile.lastname,data.profile.email,data.profile.password);
+                this.pr = new Profile(id, profile.data.firstname,profile.data.lastname,profile.data.email,profile.data.password);
                 localStorage.setItem('token', this.token);
             });
     }
@@ -40,8 +40,8 @@ export class ProfileService {
             })
          })
          .map((res : any) => {
-             let data = res.json();
-             this.token = data.profile.token;
+             let profile = res.json();
+             this.token = profile.data.token;
              localStorage.setItem('token', this.token);
          });
     }

@@ -3,7 +3,7 @@
  */
 export class Profile {
     public id: string;
-    public profile: {
+    public data: {
         firstname: string,
         lastname: string,
         email: string,
@@ -12,7 +12,7 @@ export class Profile {
     };
     constructor(private _id:string,private _firstName:string,private _lastName:string,private _email:string,private _password:string){
         this.id = _id;
-        this.profile =  {
+        this.data =  {
             "firstname":_firstName,
             "lastname":_lastName,
             "email":_email,

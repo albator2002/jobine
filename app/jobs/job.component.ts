@@ -28,11 +28,11 @@ import {JobService} from "./job.service";
         <iron-pages id="pages" selected="0">    
           <div>  
             <google-map latitude="{{lat}}" longitude="{{long}}" disableDefaultUI >
-                <google-map-marker *ngFor="let marker of jobList" latitude="{{marker.job.location.latitude}}" longitude="{{marker.job.location.longitude}}" title="{{marker.job.name}}"></google-map-marker>
+                <google-map-marker *ngFor="let marker of jobList" latitude="{{marker.data.location.latitude}}" longitude="{{marker.data.location.longitude}}" title="{{marker.data.name}}"></google-map-marker>
             </google-map>
           </div>
           <div id="listJob">
-          <li *ngFor="let marker of jobList"  title="{{marker.job.name}}">Name: {{marker.job.name}} description: {{marker.job.description}} </li>
+          <li *ngFor="let marker of jobList"  title="{{marker.data.name}}">Name: {{marker.data.name}} description: {{marker.data.description}} </li>
           </div>                 
         </iron-pages>
     

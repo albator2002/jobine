@@ -31,9 +31,9 @@ export class AuthenticationService {
             })
          })
          .map((res : any) => {
-             let data = res.json();
-             this.svrProfile.pr = new Profile(data._id, data.profile.firstname,data.profile.lastname,data.profile.email,data.profile.password);
-             this.token = data.profile.token;
+             let profile = res.json();
+             this.svrProfile.pr = new Profile(profile._id, profile.data.firstname,profile.data.lastname,profile.data.email,profile.data.password);
+             this.token = profile.data.token;
              localStorage.setItem('token', this.token);
          });
     }

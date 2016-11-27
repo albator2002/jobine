@@ -15,7 +15,7 @@ import {Profile} from "./profile";
     selector: 'profile',
 
     template: `
-    <div onfocus="initProfile()">
+    <div>
     <paper-dialog id="pdProfile"  class="size-position" >
       <h2>New Profile</h2>
      
@@ -23,19 +23,19 @@ import {Profile} from "./profile";
          <form  #profileForm="ngForm">
           <div *ngIf="error">Check your user name or password</div>
            <div>
-           <paper-input id="firstname" ngDefaultControl [(ngModel)]="profileSvr.pr.profile.firstname" name="firstname" required="true"
+           <paper-input id="firstname" ngDefaultControl [(ngModel)]="profileSvr.pr.data.firstname" name="firstname" required="true"
                    #firstname="ngModel" error-message="Invalide" label="First Name"></paper-input>
           </div>
             <div>
-           <paper-input id="lastname" ngDefaultControl [(ngModel)]="profileSvr.pr.profile.lastname" name="lastname" required="true"
+           <paper-input id="lastname" ngDefaultControl [(ngModel)]="profileSvr.pr.data.lastname" name="lastname" required="true"
                    #lastname="ngModel" error-message="Invalide" label="Last name"></paper-input>
           </div>
           <div>
-           <paper-input id="email" ngDefaultControl [(ngModel)]="profileSvr.pr.profile.email" name="email" required="true"
+           <paper-input id="email" ngDefaultControl [(ngModel)]="profileSvr.pr.data.email" name="email" required="true"
                    #email="ngModel" error-message="Invalide" label="Email"></paper-input>
           </div>
           <div>
-            <paper-input id="pwd" ngDefaultControl [(ngModel)]="profileSvr.pr.profile.password" name="password" required="true"
+            <paper-input id="pwd" ngDefaultControl [(ngModel)]="profileSvr.pr.data.password" name="password" required="true"
                    #pwd="ngModel" type="password" label="Password"></paper-input>
           </div>
           
