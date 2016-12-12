@@ -33,14 +33,11 @@ System.register(['@angular/core', '@angular/router', 'rxjs/add/operator/map', '.
                     this.error = false;
                 }
                 ngOnInit() {
-                    this.initProfile();
+                    this.initDialog();
                 }
-                initProfile() {
-                    this.toggleProfile();
-                }
-                toggleProfile() {
-                    let pdProfile = document.querySelector('#pdProfile');
-                    pdProfile.toggle();
+                initDialog() {
+                    let pdprofile = document.querySelector('#pdProfile');
+                    pdprofile.open();
                 }
                 saveProfile() {
                     //TODO: if profile.id do update
@@ -71,7 +68,7 @@ System.register(['@angular/core', '@angular/router', 'rxjs/add/operator/map', '.
                     selector: 'profile',
                     template: `
     <div>
-    <paper-dialog id="pdProfile"  class="size-position" >
+    <paper-dialog id="pdProfile"  class="size-position" modal="true">
       <h2>New Profile</h2>
      
       <div>

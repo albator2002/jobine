@@ -16,7 +16,7 @@ import {Profile} from "./profile";
 
     template: `
     <div>
-    <paper-dialog id="pdProfile"  class="size-position" >
+    <paper-dialog id="pdProfile"  class="size-position" modal="true">
       <h2>New Profile</h2>
      
       <div>
@@ -58,19 +58,15 @@ export class ProfileComponent implements OnInit{
 
     }
 
+
     ngOnInit() {
-        this.initProfile();
+        this.initDialog();
     }
 
-    initProfile(){
-        this.toggleProfile();
+    initDialog(){
+        let pdprofile = <HTMLElement>document.querySelector('#pdProfile');
+        pdprofile.open();
 
-    }
-
-    toggleProfile()
-    {
-        let pdProfile = <HTMLElement>document.querySelector('#pdProfile');
-        pdProfile.toggle();
     }
 
     saveProfile(){

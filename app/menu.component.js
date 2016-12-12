@@ -31,6 +31,9 @@ System.register(['@angular/core', '@angular/router'], function(exports_1, contex
                 editProfile() {
                     this._router.navigate([{ outlets: { popupOutlet: 'profile' } }]);
                 }
+                newJob() {
+                    this._router.navigate([{ outlets: { popupOutlet: 'job' } }]);
+                }
             };
             MenuComponent = __decorate([
                 core_1.Component({
@@ -44,7 +47,7 @@ System.register(['@angular/core', '@angular/router'], function(exports_1, contex
             <paper-item>My Jobines</paper-item>
             <paper-item>My Messages</paper-item>
             <paper-item>My bookmark</paper-item>
-            <paper-item>Post Jobine</paper-item>
+            <paper-item on-click="newJob()">New Jobine</paper-item>
             <paper-item>About</paper-item>
         </paper-listbox>
       </div>
